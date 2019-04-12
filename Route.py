@@ -2,7 +2,7 @@ import brickpi3
 import paho.mqtt.publish as publish
 import paho.mqtt.client as mqtt
 from time import sleep
-import main
+import qrDecoder
 import os
 import threading
 
@@ -155,7 +155,7 @@ try:
     cross(1)
     while(1):
         if(BP.get_sensor(BP.PORT_4) == 1):
-            room = int(main.waardepakken())
+            room = int(qrDecoder.waardepakken())
             #room = room.decode('utf-8')
             #Stuur status door naar Website
             publish.single(MQTT_STATUS, "Onderweg naar kamer {}".format(room), hostname=MQTT_SERVER)
